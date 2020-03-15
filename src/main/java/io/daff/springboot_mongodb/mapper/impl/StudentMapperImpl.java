@@ -23,14 +23,14 @@ public class StudentMapperImpl implements StudentMapper {
 
     @Override
     public void insert(Student student) {
-        mongoTemplate.save(student);
+        mongoTemplate.save(student, "students");
     }
 
     @Override
     public void delete(Integer id) {
         Student student = mongoTemplate.findById(id, Student.class);
         if (student != null) {
-            mongoTemplate.remove(student);
+            mongoTemplate.remove(student,"students");
         }
     }
 
@@ -44,13 +44,13 @@ public class StudentMapperImpl implements StudentMapper {
         update.set("name", "胖虎");
         update.set("userId", "ph666");
         update.set("visits", 200);
-        mongoTemplate.updateFirst(query, update, Student.class);
+        mongoTemplate.updateFirst(query, update, Student.class, "students");
     }
 
     @Override
-    public Student selectOne() {
-        Query query = new Query(Criteria.where("_id").is("1"));
-        return mongoTemplate.findOne(query, Student.class);
+    public Student selectOne(String id) {
+        Query query = new Query(Criteria.where("_id").is(id));
+        return mongoTemplate.findOne(query, Student.class, "students");
     }
 
     @Override

@@ -14,6 +14,6 @@ public interface StudentMapper {
     void insert(Student student);
     void delete(Integer id);
     void update(Student student);
-    Student selectOne();
+    Student selectOne(String id);
     List<Student> selectAll();
 }

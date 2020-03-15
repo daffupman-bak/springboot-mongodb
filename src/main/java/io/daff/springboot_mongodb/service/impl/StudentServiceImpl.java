@@ -4,8 +4,6 @@ import io.daff.springboot_mongodb.mapper.StudentMapper;
 import io.daff.springboot_mongodb.po.Student;
 import io.daff.springboot_mongodb.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,8 +34,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getOne() {
-        return studentMapper.selectOne();
+    public Student getOne(String id) {
+        return studentMapper.selectOne(id);
     }
 
     @Override

@@ -13,6 +13,6 @@ public interface StudentService {
     void save(Student student);
     void delete(Integer id);
     void update(Student student);
-    Student getOne();
+    Student getOne(String id);
     List<Student> getAll();
 }

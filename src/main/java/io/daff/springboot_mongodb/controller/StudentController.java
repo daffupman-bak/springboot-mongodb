@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,7 +19,7 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/save")
-    public String save(Student student) {
+    public String save(@RequestBody Student student) {
         try {
             studentService.save(student);
             return "success";
@@ -31,7 +30,7 @@ public class StudentController {
     }
 
     @PutMapping("/update")
-    public String update(Student student) {
+    public String update(@RequestBody Student student) {
         try {
             studentService.update(student);
             return "success";
@@ -52,11 +51,11 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/get")
-    public String getOne() {
+    @GetMapping("/get/{id}")
+    public String getOne(@PathVariable("id") String id) {
         try {
-            studentService.getOne();
-            return "success";
+            Student one = studentService.getOne(id);
+            return one.toString();
         } catch (Exception e) {
             e.printStackTrace();
             return "fail";
