@@ -27,8 +27,8 @@ public class StudentMapperImpl implements StudentMapper {
     }
 
     @Override
-    public void delete(Integer id) {
-        Student student = mongoTemplate.findById(id, Student.class);
+    public void delete(String id) {
+        Student student = mongoTemplate.findById(id, Student.class, "students");
         if (student != null) {
             mongoTemplate.remove(student,"students");
         }

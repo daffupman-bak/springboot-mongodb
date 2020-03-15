@@ -40,8 +40,8 @@ public class StudentController {
         }
     }
 
-    @DeleteMapping("/delete")
-    public String remove(Integer id) {
+    @DeleteMapping("/delete/{id}")
+    public String remove(@PathVariable("id") String id) {
         try {
             studentService.delete(id);
             return "success";

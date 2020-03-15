@@ -11,7 +11,7 @@ import java.util.List;
 public interface StudentService {
 
     void save(Student student);
-    void delete(Integer id);
+    void delete(String id);
     void update(Student student);
     Student getOne(String id);
     List<Student> getAll();

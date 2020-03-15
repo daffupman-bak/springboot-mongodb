@@ -12,7 +12,7 @@ import java.util.List;
 public interface StudentMapper {
 
     void insert(Student student);
-    void delete(Integer id);
+    void delete(String id);
     void update(Student student);
     Student selectOne(String id);
     List<Student> selectAll();
